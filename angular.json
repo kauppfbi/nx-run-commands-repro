@@ -89,6 +89,7 @@
           "builder": "@jscutlery/semver:version",
           "options": {
             "commitMessageFormat": "chore(${projectName}): release version ${version}",
+            "noVerify": true,
             "postTargets": ["test:custom-command", "test:custom-command-parallel"]
           }
         },
