@@ -74,7 +74,8 @@
               "apps/test/src/**/*.ts",
               "apps/test/src/**/*.html"
             ]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -90,7 +91,8 @@
             "commitMessageFormat": "chore(${projectName}): release version ${version}"
           }
         }
-      }
+      },
+      "tags": []
     },
     "test-e2e": {
       "root": "apps/test-e2e",
@@ -114,7 +116,8 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/test-e2e/**/*.{js,ts}"]
-          }
+          },
+          "outputs": ["{options.outputFile}"]
         },
         "version": {
           "builder": "@jscutlery/semver:version",
@@ -122,7 +125,9 @@
             "commitMessageFormat": "chore(${projectName}): release version ${version}"
           }
         }
-      }
+      },
+      "tags": [],
+      "implicitDependencies": ["test"]
     }
   }
 }
