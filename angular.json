@@ -1,36 +1,5 @@
 {
   "version": 1,
-  "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "defaultProject": "test",
-  "schematics": {
-    "@nrwl/angular": {
-      "application": {
-        "linter": "eslint"
-      },
-      "library": {
-        "linter": "eslint"
-      },
-      "storybook-configuration": {
-        "linter": "eslint"
-      }
-    },
-    "@nrwl/angular:application": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "style": "css",
-      "linter": "eslint",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "style": "css"
-    }
-  },
   "projects": {
     "test": {
       "projectType": "application",
@@ -114,6 +83,12 @@
             "jestConfig": "apps/test/jest.config.js",
             "passWithNoTests": true
           }
+        },
+        "version": {
+          "builder": "@jscutlery/semver:version",
+          "options": {
+            "commitMessageFormat": "chore(${projectName}): release version ${version}"
+          }
         }
       }
     },
@@ -139,6 +114,12 @@
           "builder": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": ["apps/test-e2e/**/*.{js,ts}"]
+          }
+        },
+        "version": {
+          "builder": "@jscutlery/semver:version",
+          "options": {
+            "commitMessageFormat": "chore(${projectName}): release version ${version}"
           }
         }
       }
