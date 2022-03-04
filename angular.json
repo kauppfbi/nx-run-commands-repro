@@ -88,7 +88,21 @@
         "version": {
           "builder": "@jscutlery/semver:version",
           "options": {
-            "commitMessageFormat": "chore(${projectName}): release version ${version}"
+            "commitMessageFormat": "chore(${projectName}): release version ${version}",
+            "postTargets": ["test:custom-command", "test:custom-command-parallel"]
+          }
+        },
+        "custom-command": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "command": "echo run custom command && echo version: ${version}"
+          }
+        },
+        "custom-command-parallel": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": ["echo run custom command in parallel", "echo version: ${version}"],
+            "parallel":false
           }
         }
       },
