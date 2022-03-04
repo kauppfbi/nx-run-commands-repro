@@ -90,7 +90,7 @@
           "options": {
             "commitMessageFormat": "chore(${projectName}): release version ${version}",
             "noVerify": true,
-            "postTargets": ["test:custom-command", "test:custom-command-parallel"]
+            "postTargets": ["test:custom-command", "test:custom-commands"]
           }
         },
         "custom-command": {
@@ -99,7 +99,7 @@
             "command": "echo run custom command && echo version: ${version}"
           }
         },
-        "custom-command-parallel": {
+        "custom-commands": {
           "builder": "@nrwl/workspace:run-commands",
           "options": {
             "commands": ["echo run custom command in parallel", "echo version: ${version}"],
